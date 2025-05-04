@@ -8,7 +8,7 @@ export class CheckBoxPage{
     private toggleButton: Locator;
     private plusIcon: Locator;
     private minusIcon: Locator;
-    private result: Locator;
+    public result: Locator;
 
     constructor(page:Page){
         this.page = page;
