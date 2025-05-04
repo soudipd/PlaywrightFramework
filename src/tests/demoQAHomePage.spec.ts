@@ -50,8 +50,9 @@ test('Miscellaneous Test', async ({page}) => {
     await checkBoxPageObj.waitForPageToLoad();
     console.log('Check Box Page URL:', await checkBoxPageObj.getPageUrl());
     const isCheckBoxChecked = await checkBoxPageObj.clickOnCheckBoxBesideHome();
+    const resultLocator = await checkBoxPageObj.getResult();
     if(isCheckBoxChecked){
-        expect(await checkBoxPageObj.result.isVisible()).toBeTruthy()
+        expect(await resultLocator.isVisible()).toBeTruthy()
     }else{
         console.log('CheckBox is not checked')
     }

@@ -8,7 +8,7 @@ export class CheckBoxPage{
     private toggleButton: Locator;
     private plusIcon: Locator;
     private minusIcon: Locator;
-    public result: Locator;
+    private result: Locator;
 
     constructor(page:Page){
         this.page = page;
@@ -29,6 +29,9 @@ export class CheckBoxPage{
     async getPageUrl(){
         return this.page.url();
     }
+    async getResult():Promise<Locator>{
+        return this.result;
+    }
     async clickOnCheckBoxBesideHome():Promise<boolean>{  
         const isCheckboxVisible = await this.homeCheckBox.isVisible();
         console.log(`Checkbox is visible: ${isCheckboxVisible}`);  
@@ -45,5 +48,16 @@ export class CheckBoxPage{
      }
      return await this.homeCheckBox.isChecked();
     }
+    async clickOnToggleButton(){
+        await this.toggleButton.click();
+    }
+    async clickOnPlusIcon(){
+        await this.plusIcon.click();
+    }
+    async clickOnMinusIcon(){
+        await this.minusIcon.click();
+    }
+
+    async clickOnCheckBox(){}
 
 }
