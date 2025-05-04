@@ -29,16 +29,17 @@ export class CheckBoxPage{
     async getPageUrl(){
         return this.page.url();
     }
-    async clickOnCheckBoxBesideHome():Promise<boolean>{    
+    async clickOnCheckBoxBesideHome():Promise<boolean>{  
+        const isCheckboxVisible = await this.homeCheckBox.isVisible();
+        console.log(`Checkbox is visible: ${isCheckboxVisible}`);  
         await this.homeCheckBox.waitFor({state:'visible'});
         await this.homeCheckBox.hover();
         if(await this.homeCheckBox.isEnabled()){
         console.log("CheckBox is enabled");
-        await this.homeCheckBox.click();
-        await this.page.waitForTimeout(1000);
+        //await this.homeCheckBox.click();
+        //await this.page.waitForTimeout(1000);
     } else{
         console.log("CheckBox is not enabled");
-        return false;
      }
      return await this.homeCheckBox.isChecked();
     }

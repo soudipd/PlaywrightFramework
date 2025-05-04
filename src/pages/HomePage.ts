@@ -21,7 +21,7 @@ export class demoQAHomePage{
  }
     //Page level actions
     async navigateToDemoQAHomePage(){
-            await this.page.goto('https://demoqa.com/')
+        await this.page.goto('https://demoqa.com/', { waitUntil: 'domcontentloaded' });
         }
 
     async waitForPageToLoad(){
