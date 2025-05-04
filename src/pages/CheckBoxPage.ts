@@ -9,12 +9,13 @@ export class CheckBoxPage{
     private plusIcon: Locator;
     private minusIcon: Locator;
     private result: Locator;
+    private 
 
     constructor(page:Page){
         this.page = page;
         this.checkBox = page.getByText('Check Box');
         this.checkBoxHeader = page.getByRole('heading', {name:'Check Box'});
-        this.homeCheckBox = page.locator('.rct-checkbox');
+        this.homeCheckBox = page.locator(".rct-text").filter({hasText:'Home'}).locator('.rct-checkbox');
         this.toggleButton = page.getByRole('button', {name:'Toggle'});
         this.plusIcon = page.getByRole('button', {name:'Expand All'});
         this.minusIcon = page.getByRole('button', {name:'Collapse all'});
@@ -51,6 +52,11 @@ export class CheckBoxPage{
      }
      return await this.homeCheckBox.isChecked();
     }
+    async getTextFromResultElement():Promise<string>{
+        const resultText = await this.result.textContent();
+        console.log(`Result text: ${resultText}`);
+        return resultText || '';
+    }
     async clickOnToggleButton(){
         await this.toggleButton.click();
     }
@@ -61,6 +67,8 @@ export class CheckBoxPage{
         await this.minusIcon.click();
     }
 
-    async clickOnCheckBox(){}
+    async clickOnCheckBox(){
+
+    }
 
 }

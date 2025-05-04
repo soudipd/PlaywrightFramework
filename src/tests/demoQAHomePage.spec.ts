@@ -57,6 +57,9 @@ test('Miscellaneous Test', async ({page}) => {
         console.log('CheckBox is not checked')
     }
     const homeCheckBoxLocator = await checkBoxPageObj.getHomeCheckBox();
+    await checkBoxPageObj.clickOnToggleButton();
+    await page.waitForTimeout(1000);
+    console.log('After selection following is being displayed:', await checkBoxPageObj.getTextFromResultElement());
     await homeCheckBoxLocator.click();
     await expect(homeCheckBoxLocator).not.toBeChecked();
 });
