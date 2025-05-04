@@ -38,9 +38,12 @@ export class CheckBoxPage{
         console.log("CheckBox is enabled");
         await this.homeCheckBox.click();
         await this.page.waitForTimeout(1000);
+        const resultIsDisplayed = await this.result.isVisible();
+        console.log(`Result is displayed: ${resultIsDisplayed}`);
     } else{
         console.log("CheckBox is not enabled");
      }
      return await this.homeCheckBox.isChecked();
     }
+
 }

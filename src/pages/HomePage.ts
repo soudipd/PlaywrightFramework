@@ -10,6 +10,7 @@ export class demoQAHomePage{
  private interactionsCard: Locator;
  private bookstoreApplicationCard: Locator;
 
+
  constructor(page:Page){
     this.page =page;
     this.elementsCard = page.getByRole('heading',{name:'Elements'})
@@ -18,7 +19,8 @@ export class demoQAHomePage{
     this.widgetsCard = page.getByRole('heading',{name:'Widgets'})
     this.interactionsCard = page.getByRole('heading',{name:'Interactions'})
     this.bookstoreApplicationCard = page.getByRole('heading',{name:'Book Store Application'})
- }
+
+}
     //Page level actions
     async navigateToDemoQAHomePage(){
         await this.page.goto('https://demoqa.com/', { waitUntil: 'domcontentloaded' });

@@ -52,6 +52,7 @@ test('Miscellaneous Test', async ({page}) => {
     const isCheckBoxChecked = await checkBoxPageObj.clickOnCheckBoxBesideHome();
     if(isCheckBoxChecked){
 
+
     }else{
         console.log('CheckBox is not checked')
     }
