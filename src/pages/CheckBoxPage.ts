@@ -36,8 +36,8 @@ export class CheckBoxPage{
         await this.homeCheckBox.hover();
         if(await this.homeCheckBox.isEnabled()){
         console.log("CheckBox is enabled");
-        //await this.homeCheckBox.click();
-        //await this.page.waitForTimeout(1000);
+        await this.homeCheckBox.click();
+        await this.page.waitForTimeout(1000);
     } else{
         console.log("CheckBox is not enabled");
      }
