@@ -56,5 +56,7 @@ test('Miscellaneous Test', async ({page}) => {
     }else{
         console.log('CheckBox is not checked')
     }
-    
+    const homeCheckBoxLocator = await checkBoxPageObj.getHomeCheckBox();
+    await homeCheckBoxLocator.click();
+    await expect(homeCheckBoxLocator).not.toBeChecked();
 });

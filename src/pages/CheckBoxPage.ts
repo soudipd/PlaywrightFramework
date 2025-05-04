@@ -32,6 +32,9 @@ export class CheckBoxPage{
     async getResult():Promise<Locator>{
         return this.result;
     }
+    async getHomeCheckBox():Promise<Locator>{
+        return this.homeCheckBox;
+    }
     async clickOnCheckBoxBesideHome():Promise<boolean>{  
         const isCheckboxVisible = await this.homeCheckBox.isVisible();
         console.log(`Checkbox is visible: ${isCheckboxVisible}`);  
