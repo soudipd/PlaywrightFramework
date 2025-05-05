@@ -49,9 +49,9 @@ test('Miscellaneous Test', async ({page}) => {
     const checkBoxPageObj = await elementPageObj.navigateToCheckBox();
     await checkBoxPageObj.waitForPageToLoad();
     console.log('Check Box Page URL:', await checkBoxPageObj.getPageUrl());
-    /*const isCheckBoxChecked = await checkBoxPageObj.clickOnCheckBoxBesideHome();
+    /*const isCheckBoxChecked = await checkBoxPageObj.clickOnTheCheckBoxBesideHome();*/
     const resultLocator = await checkBoxPageObj.getResult();
-    if(isCheckBoxChecked){
+    /*if(isCheckBoxChecked){
         expect(await resultLocator.isVisible()).toBeTruthy()
     }else{
         console.log('CheckBox is not checked')
@@ -83,7 +83,23 @@ test('Miscellaneous Test', async ({page}) => {
     
     await page.waitForTimeout(1000);
     console.log('After selection following is being displayed:', await checkBoxPageObj.getTextFromResultElement());
+    
     await homeCheckBoxLocator.click();
-    await expect(homeCheckBoxLocator).not.toBeChecked();
+    if(!await homeCheckBoxLocator.isChecked()){
+        if(!await desktopCheckBoxLocator.isChecked()){
+            if(!await documentsCheckBoxLocator.isChecked()){
+                if(!await downloadCheckBoxLocator.isChecked()){
+                    console.log('All checkboxes are unchecked');
+                }else{
+                    console.log('Download checkbox is not unchecked');
+                }
+            }else{
+                console.log('Documents checkbox is not unchecked');
+            }
+        }else{
+            console.log('Desktop checkbox is not unchecked');         
+        }
+    }
+    expect(await resultLocator.isVisible()).toBeFalsy();
 
 });

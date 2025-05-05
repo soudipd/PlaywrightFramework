@@ -50,10 +50,9 @@ export class CheckBoxPage{
     async getDownloadCheckBox():Promise<Locator>{
         return this.downloadCheckBox;
     }
-    async clickOnCheckBoxBesideHome():Promise<boolean>{  
+    async clickOnTheCheckBoxBesideHome():Promise<boolean>{  
         const isCheckboxVisible = await this.homeCheckBox.isVisible();
-        console.log(`Checkbox is visible: ${isCheckboxVisible}`);  
-        await this.homeCheckBox.waitFor({state:'visible'});
+        console.log(`Checkbox is visible: ${isCheckboxVisible}`); 
         await this.homeCheckBox.hover();
         if(await this.homeCheckBox.isEnabled()){
         console.log("CheckBox is enabled");
