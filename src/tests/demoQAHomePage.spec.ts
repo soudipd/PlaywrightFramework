@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 import { demoQAHomePage } from '../pages/HomePage';
 
 
-test.skip('Home Page Navigation', async ({page}) => {
+test('Home Page Navigation', async ({page}) => {
     const demoQAHomePageObj = new demoQAHomePage(page);
     await demoQAHomePageObj.navigateToDemoQAHomePage();
     await demoQAHomePageObj.waitForPageToLoad();
@@ -49,17 +49,41 @@ test('Miscellaneous Test', async ({page}) => {
     const checkBoxPageObj = await elementPageObj.navigateToCheckBox();
     await checkBoxPageObj.waitForPageToLoad();
     console.log('Check Box Page URL:', await checkBoxPageObj.getPageUrl());
-    const isCheckBoxChecked = await checkBoxPageObj.clickOnCheckBoxBesideHome();
+    /*const isCheckBoxChecked = await checkBoxPageObj.clickOnCheckBoxBesideHome();
     const resultLocator = await checkBoxPageObj.getResult();
     if(isCheckBoxChecked){
         expect(await resultLocator.isVisible()).toBeTruthy()
     }else{
         console.log('CheckBox is not checked')
-    }
+    }*/
     const homeCheckBoxLocator = await checkBoxPageObj.getHomeCheckBox();
     await checkBoxPageObj.clickOnToggleButton();
+    const desktopCheckBoxLocator = await checkBoxPageObj.getDesktopCheckBox();
+    const documentsCheckBoxLocator = await checkBoxPageObj.getDocumentsCheckBox();
+    const downloadCheckBoxLocator = await checkBoxPageObj.getDownloadCheckBox();
+    
+    await homeCheckBoxLocator.click();
+    if(await homeCheckBoxLocator.isChecked()){
+        if(await desktopCheckBoxLocator.isChecked()){
+            if(await documentsCheckBoxLocator.isChecked()){
+                if(await downloadCheckBoxLocator.isChecked()){
+                    console.log('All checkboxes are checked');
+                }else{
+                    console.log('Download checkbox is not checked');
+                }
+            }else{
+                console.log('Documents checkbox is not checked');
+            }
+        }else{
+            console.log('Desktop checkbox is not checked');         
+        }
+    }
+    
+    
+    
     await page.waitForTimeout(1000);
     console.log('After selection following is being displayed:', await checkBoxPageObj.getTextFromResultElement());
     await homeCheckBoxLocator.click();
     await expect(homeCheckBoxLocator).not.toBeChecked();
+
 });

@@ -9,13 +9,18 @@ export class CheckBoxPage{
     private plusIcon: Locator;
     private minusIcon: Locator;
     private result: Locator;
-    private 
+    private desktopCheckBox: Locator;
+    private documentsCheckBox: Locator;
+    private downloadCheckBox: Locator;
 
     constructor(page:Page){
         this.page = page;
         this.checkBox = page.getByText('Check Box');
         this.checkBoxHeader = page.getByRole('heading', {name:'Check Box'});
         this.homeCheckBox = page.locator(".rct-text").filter({hasText:'Home'}).locator('.rct-checkbox');
+        this.desktopCheckBox = page.locator(".rct-text").filter({hasText:'Desktop'}).locator('.rct-checkbox');
+        this.documentsCheckBox = page.locator(".rct-text").filter({hasText:'Documents'}).locator('.rct-checkbox');
+        this.downloadCheckBox = page.locator(".rct-text").filter({hasText:'Downloads'}).locator('.rct-checkbox');
         this.toggleButton = page.getByRole('button', {name:'Toggle'});
         this.plusIcon = page.getByRole('button', {name:'Expand All'});
         this.minusIcon = page.getByRole('button', {name:'Collapse all'});
@@ -35,6 +40,15 @@ export class CheckBoxPage{
     }
     async getHomeCheckBox():Promise<Locator>{
         return this.homeCheckBox;
+    }
+    async getDesktopCheckBox():Promise<Locator>{
+        return this.desktopCheckBox;
+    }
+    async getDocumentsCheckBox():Promise<Locator>{
+        return this.documentsCheckBox;
+    }
+    async getDownloadCheckBox():Promise<Locator>{
+        return this.downloadCheckBox;
     }
     async clickOnCheckBoxBesideHome():Promise<boolean>{  
         const isCheckboxVisible = await this.homeCheckBox.isVisible();
@@ -60,6 +74,7 @@ export class CheckBoxPage{
     async clickOnToggleButton(){
         await this.toggleButton.click();
     }
+
     async clickOnPlusIcon(){
         await this.plusIcon.click();
     }
