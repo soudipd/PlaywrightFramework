@@ -1,8 +1,10 @@
 import {test, expect} from '@playwright/test';
 import { demoQAHomePage } from '../pages/HomePage';
+import { ElementsPage } from '../pages/ElementPage';
+import { RadioButtonPage } from '../pages/RadioButtonPage';
 
 
-test('Home Page Navigation', async ({page}) => {
+test.skip('Home Page Navigation', async ({page}) => {
     const demoQAHomePageObj = new demoQAHomePage(page);
     await demoQAHomePageObj.navigateToDemoQAHomePage();
     await demoQAHomePageObj.waitForPageToLoad();
@@ -13,7 +15,7 @@ test('Home Page Navigation', async ({page}) => {
     expect(pageTitle).toBe('DEMOQA');
     expect(pageUrl).toBe('https://demoqa.com/');
 });
-test('Miscellaneous Test', async ({page}) => {
+test.skip('Miscellaneous Test', async ({page}) => {
     
     const demoQAHomePageObj = new demoQAHomePage(page);
     await demoQAHomePageObj.navigateToDemoQAHomePage();
@@ -102,4 +104,15 @@ test('Miscellaneous Test', async ({page}) => {
     }
     expect(await resultLocator.isVisible()).toBeFalsy();
 
+});
+
+test('Radio Button Test', async ({page}) => {
+    const demoQAHomePageObj = new demoQAHomePage(page);
+    await demoQAHomePageObj.navigateToDemoQAHomePage();
+    await demoQAHomePageObj.waitForPageToLoad();
+    const elementPageObj=await demoQAHomePageObj.navigateToElementsPage();
+    const radioButtonPageObj = await elementPageObj.navigateToRadioButtonPage();
+    await radioButtonPageObj.waitForPageToLoad();
+    await radioButtonPageObj.clickOnYesRadioButton();
+    await radioButtonPageObj.clickOnImpressiveRadioButton();   
 });

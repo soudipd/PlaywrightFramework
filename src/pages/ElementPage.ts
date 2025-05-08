@@ -1,6 +1,7 @@
 import {Page, Locator} from '@playwright/test';
 import { CheckBoxPage } from './CheckBoxPage';
 import { TextBoxPage } from './TextBoxPage';
+import { RadioButtonPage } from '../pages/RadioButtonPage';
 
 export class ElementsPage{
     private page:Page;
@@ -59,6 +60,14 @@ export class ElementsPage{
         await this.checkBox.hover();
         await this.checkBox.click();
         return new CheckBoxPage(this.page);
+    }
+    async navigateToRadioButtonPage():Promise<RadioButtonPage>{
+
+        await this.radioButton.waitFor({state:'visible'});
+        await this.radioButton.hover();
+        await this.radioButton.click();
+        const radioButtonPageObj = new RadioButtonPage(this.page);
+        return radioButtonPageObj;
     }
     async clickOnRadioButton(){ 
         await this.radioButton.waitFor({state:'visible'});

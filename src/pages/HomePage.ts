@@ -1,6 +1,7 @@
 import {Page, Locator } from '@playwright/test'
 import { ElementsPage } from '../pages/ElementPage';
 
+
 export class demoQAHomePage{
  private page: Page;
  private elementsCard: Locator;
@@ -9,6 +10,7 @@ export class demoQAHomePage{
  private widgetsCard: Locator;
  private interactionsCard: Locator;
  private bookstoreApplicationCard: Locator;
+ private RadioButtonTab: Locator;
 
 
  constructor(page:Page){
@@ -19,7 +21,7 @@ export class demoQAHomePage{
     this.widgetsCard = page.getByRole('heading',{name:'Widgets'})
     this.interactionsCard = page.getByRole('heading',{name:'Interactions'})
     this.bookstoreApplicationCard = page.getByRole('heading',{name:'Book Store Application'})
-
+    this.RadioButtonTab = page.getByText('Radio Button');
 }
     //Page level actions
     async navigateToDemoQAHomePage(){
@@ -101,4 +103,6 @@ export class demoQAHomePage{
     }
     //End of interactions methods with the bookstore application card
     
+   
+
 }

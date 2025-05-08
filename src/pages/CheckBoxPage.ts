@@ -74,6 +74,8 @@ export class CheckBoxPage{
         await this.toggleButton.click();
     }
 
+    
+
     async clickOnPlusIcon(){
         await this.plusIcon.click();
     }
