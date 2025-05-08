@@ -82,7 +82,7 @@ export class CheckBoxPage{
     }
 
     async clickOnCheckBox(){
-
+        
     }
 
 }
