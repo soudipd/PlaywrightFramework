@@ -2,6 +2,7 @@ import {Page, Locator} from '@playwright/test';
 import { CheckBoxPage } from './CheckBoxPage';
 import { TextBoxPage } from './TextBoxPage';
 import { RadioButtonPage } from '../pages/RadioButtonPage';
+import { WebTablesPage } from './WebTablesPage';
 
 export class ElementsPage{
     private page:Page;
@@ -68,6 +69,13 @@ export class ElementsPage{
         await this.radioButton.click();
         const radioButtonPageObj = new RadioButtonPage(this.page);
         return radioButtonPageObj;
+    }
+    async naviagteToWebTablesPage():Promise<WebTablesPage>{
+        await this.webTables.waitFor({state:'visible'});
+        await this.webTables.hover();
+        await this.webTables.click();
+        const webTablesPageObj = new WebTablesPage(this.page);
+        return webTablesPageObj;
     }
     async clickOnRadioButton(){ 
         await this.radioButton.waitFor({state:'visible'});
