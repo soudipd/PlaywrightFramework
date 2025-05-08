@@ -1,7 +1,6 @@
 import {test, expect} from '@playwright/test';
 import { demoQAHomePage } from '../pages/HomePage';
-import { ElementsPage } from '../pages/ElementPage';
-import { RadioButtonPage } from '../pages/RadioButtonPage';
+
 
 
 test.skip('Home Page Navigation', async ({page}) => {
