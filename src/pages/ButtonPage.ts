@@ -8,16 +8,15 @@ export class ButtonPage{
     private doubleClickButton: Locator;
     private rightClickButton: Locator;
     private dynamicClickButton: Locator;
-    private message: Locator;
+    private doubleClickMessage: Locator;
 
     constructor(page:Page){
         this.page = page;
-        this.button = page.getByText('Buttons');
         this.buttonHeader = page.getByRole('heading', {name:'Buttons'});
         this.doubleClickButton = page.locator('#doubleClickBtn');
         this.rightClickButton = page.locator('#rightClickBtn');
         this.dynamicClickButton = page.locator('#dynamicClickBtn');
-        this.message = page.locator('#dynamicClickMessage');
+        this.doubleClickMessage = page.locator('#doubleClickMessage');
     }
     async waitForPageToLoad(){
         await this.page.waitForSelector('text=Buttons')
@@ -27,5 +26,18 @@ export class ButtonPage{
     }
     async getPageUrl(){
         return this.page.url();
+    }
+    async clickOnDoubleClickButton(){
+        await this.doubleClickButton.dblclick();
+        await this.doubleClickMessage.waitFor({state:'visible'});
+    }
+    async clickOnRightClickButton(){    
+        await this.rightClickButton.click({button: 'right'});
+    }
+    async clickOnDynamicClickButton(){
+        await this.dynamicClickButton.click();
+    }
+    async getDoubleClickMessage(){
+        return this.doubleClickMessage;
     }
 }
