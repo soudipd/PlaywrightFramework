@@ -35,10 +35,10 @@ test.skip('Miscellaneous Test', async ({page}) => {
     await textBoxPageObj.waitForPageToLoad();
     console.log('Text Box Page URL:', await textBoxPageObj.getPageUrl());
 
-    await textBoxPageObj.enterFullName("Soudip Das")
-    await textBoxPageObj.enterEmail("soudipdas@gmil.com")
-    await textBoxPageObj.enterCurrentAddress("Soudip Das, 1234, 5th Avenue, New York, NY 10001")
-    await textBoxPageObj.enterPermanentAddress("Soudip Das, 1234, 5th Avenue, New York, NY 10001")
+    await textBoxPageObj.enterFullName("Soudip Das");
+    await textBoxPageObj.enterEmail("soudipdas@gmil.com");
+    await textBoxPageObj.enterCurrentAddress("Soudip Das, 1234, 5th Avenue, New York, NY 10001");
+    await textBoxPageObj.enterPermanentAddress("Soudip Das, 1234, 5th Avenue, New York, NY 10001");
     await textBoxPageObj.clickOnSubmitButton();
     const output = await textBoxPageObj.getOutputText();
     console.log('Output:', output);
@@ -105,7 +105,7 @@ test.skip('Miscellaneous Test', async ({page}) => {
 
 });
 
-test('Radio Button Test', async ({page}) => {
+test.skip('Radio Button Test', async ({page}) => {
     const demoQAHomePageObj = new demoQAHomePage(page);
     await demoQAHomePageObj.navigateToDemoQAHomePage();
     await demoQAHomePageObj.waitForPageToLoad();
@@ -114,4 +114,15 @@ test('Radio Button Test', async ({page}) => {
     await radioButtonPageObj.waitForPageToLoad();
     await radioButtonPageObj.clickOnYesRadioButton();
     await radioButtonPageObj.clickOnImpressiveRadioButton();   
+});
+test('button test', async ({page}) => { 
+    const demoQAHomePageObj = new demoQAHomePage(page);
+    await demoQAHomePageObj.navigateToDemoQAHomePage();
+    await demoQAHomePageObj.waitForPageToLoad();
+    const elementPageObj=await demoQAHomePageObj.navigateToElementsPage();
+    const buttonPageObj = await elementPageObj.navigateToButtonPage();
+    await buttonPageObj.waitForPageToLoad();
+    console.log('Button Page URL:', await buttonPageObj.getPageUrl());
+    await buttonPageObj.clickOnDoubleClickButton();
+    await (await buttonPageObj.getDoubleClickMessage()).waitFor({state:'visible'});
 });

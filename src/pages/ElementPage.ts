@@ -3,6 +3,7 @@ import { CheckBoxPage } from './CheckBoxPage';
 import { TextBoxPage } from './TextBoxPage';
 import { RadioButtonPage } from '../pages/RadioButtonPage';
 import { WebTablesPage } from './WebTablesPage';
+import { ButtonPage } from './ButtonPage';
 
 export class ElementsPage{
     private page:Page;
@@ -76,6 +77,13 @@ export class ElementsPage{
         await this.webTables.click();
         const webTablesPageObj = new WebTablesPage(this.page);
         return webTablesPageObj;
+    }
+    async navigateToButtonPage():Promise<ButtonPage>{
+        await this.buttons.waitFor({state:'visible'});
+        await this.buttons.hover();
+        await this.buttons.click();
+        const buttonPageObj = new ButtonPage(this.page);
+        return buttonPageObj;
     }
     async clickOnRadioButton(){ 
         await this.radioButton.waitFor({state:'visible'});
