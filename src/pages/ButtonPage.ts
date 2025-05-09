@@ -29,7 +29,6 @@ export class ButtonPage{
     }
     async clickOnDoubleClickButton(){
         await this.doubleClickButton.dblclick();
-        await this.doubleClickMessage.waitFor({state:'visible'});
     }
     async clickOnRightClickButton(){    
         await this.rightClickButton.click({button: 'right'});
