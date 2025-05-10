@@ -141,5 +141,5 @@ test('Web Tables Test', async ({page}) => {
     console.log('Web Tables Page Title:', await webTablesPageObj.getPageTitle());
     console.log('Web Tables Header:', await webTablesPageObj.getRowsCount());
     expect( await webTablesPageObj.getRowsCount()).toBe(10)
-    expect(await webTablesPageObj.getFirstNameHeader()).toBe('First Name');
+    expect(await webTablesPageObj.getFirstNameHeaderText()).toBe('First Name');
 });
