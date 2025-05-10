@@ -4,11 +4,13 @@ export class WebTablesPage{
     private page:Page;
     private webTablesHeader: Locator;
     private rowsCount: Locator;
+    private firstNameHeader: Locator;
 
     constructor(page:Page){
         this.page = page;
         this.webTablesHeader = page.getByRole('heading', {name:'Web Tables'});
         this.rowsCount = page.getByRole('rowgroup');
+        this.firstNameHeader= page.getByRole('columnheader', {name:'First Name'});
     }
     async waitForPageToLoad(){
         await this.page.waitForSelector('text=Web Tables');
@@ -24,6 +26,9 @@ export class WebTablesPage{
     }
     async getRowsCount(){
         return this.rowsCount.count();
+    }
+    async getFirstNameHeader(){
+        return this.firstNameHeader;
     }
 }
 
