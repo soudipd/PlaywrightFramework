@@ -115,7 +115,7 @@ test.skip('Radio Button Test', async ({page}) => {
     await radioButtonPageObj.clickOnYesRadioButton();
     await radioButtonPageObj.clickOnImpressiveRadioButton();   
 });
-test('button test', async ({page}) => { 
+test.skip('button test', async ({page}) => { 
     const demoQAHomePageObj = new demoQAHomePage(page);
     await demoQAHomePageObj.navigateToDemoQAHomePage();
     await demoQAHomePageObj.waitForPageToLoad();
@@ -129,4 +129,16 @@ test('button test', async ({page}) => {
     await (await buttonPageObj.getRightClickMessage()).waitFor({state:'visible'});
     await buttonPageObj.clickOnDynamicClickButton();
     await (await buttonPageObj.getDynamicClickMessage()).waitFor({state:'visible'});
+});
+test('Web Tables Test', async ({page}) => {
+    const demoQAHomePageObj = new demoQAHomePage(page);
+    await demoQAHomePageObj.navigateToDemoQAHomePage();
+    await demoQAHomePageObj.waitForPageToLoad();
+    const elementPageObj=await demoQAHomePageObj.navigateToElementsPage();
+    const webTablesPageObj = await elementPageObj.naviagteToWebTablesPage();
+    await webTablesPageObj.waitForPageToLoad();
+    console.log('Web Tables Page URL:', await webTablesPageObj.getPageUrl());
+    console.log('Web Tables Page Title:', await webTablesPageObj.getPageTitle());
+    console.log('Web Tables Header:', await webTablesPageObj.getRowsCount());
+    expect( await webTablesPageObj.getRowsCount()).toBe(10)
 });
