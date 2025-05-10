@@ -16,7 +16,7 @@ export class ButtonPage{
         this.buttonHeader = page.getByRole('heading', {name:'Buttons'});
         this.doubleClickButton = page.locator('#doubleClickBtn');
         this.rightClickButton = page.locator('#rightClickBtn');
-        this.dynamicClickButton = page.locator('#tPv6t');
+        this.dynamicClickButton = page.getByRole('button', {name:'Click Me', exact:true});
         this.doubleClickMessage = page.locator('#doubleClickMessage');
         this.rightClickMessage = page.locator('#rightClickMessage');
     }
