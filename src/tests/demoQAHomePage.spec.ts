@@ -142,4 +142,10 @@ test('Web Tables Test', async ({page}) => {
     console.log('Web Tables Header:', await webTablesPageObj.getRowsCount());
     expect( await webTablesPageObj.getRowsCount()).toBe(10)
     expect(await webTablesPageObj.getFirstNameHeaderText()).toBe('First Name');
+    expect(await webTablesPageObj.getLastNameHeaderText()).toBe('Last Name');
+    expect(await webTablesPageObj.getEmailHeaderText()).toBe('Email');
+    expect(await webTablesPageObj.getAgeHeaderText()).toBe('Age');
+    expect(await webTablesPageObj.getSalaryHeaderText()).toBe('Salary');
+    expect(await webTablesPageObj.getDepartmentHeaderText()).toBe('Department');
+    expect(await webTablesPageObj.getActionHeaderText()).toBe('Actions');
 });
