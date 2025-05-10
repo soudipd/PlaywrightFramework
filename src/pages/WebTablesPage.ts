@@ -27,6 +27,9 @@ export class WebTablesPage{
     async getRowsCount(){
         return this.rowsCount.count();
     }
+    async getFirstNameHeaderText(){
+        return this.firstNameHeader.textContent();
+    }
     async getFirstNameHeader(){
         return this.firstNameHeader;
     }
