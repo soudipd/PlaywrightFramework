@@ -125,4 +125,5 @@ test('button test', async ({page}) => {
     console.log('Button Page URL:', await buttonPageObj.getPageUrl());
     await buttonPageObj.clickOnDoubleClickButton();
     await (await buttonPageObj.getDoubleClickMessage()).waitFor({state:'visible'});
+    await buttonPageObj.clickOnRightClickButton();
 });
