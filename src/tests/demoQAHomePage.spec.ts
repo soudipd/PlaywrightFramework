@@ -126,4 +126,7 @@ test('button test', async ({page}) => {
     await buttonPageObj.clickOnDoubleClickButton();
     await (await buttonPageObj.getDoubleClickMessage()).waitFor({state:'visible'});
     await buttonPageObj.clickOnRightClickButton();
+    await (await buttonPageObj.getRightClickMessage()).waitFor({state:'visible'});
+    await buttonPageObj.clickOnDynamicClickButton();
+    await (await buttonPageObj.getDynamicClickMessage()).waitFor({state:'visible'});
 });
