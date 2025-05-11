@@ -22,7 +22,7 @@ export class WebTablesPage{
         this.ageHeader= page.getByRole('columnheader', {name:'Age'});
         this.salaryHeader= page.getByRole('columnheader', {name:'Salary'});
         this.departmentHeader= page.getByRole('columnheader', {name:'Department'});
-        this.actionHeader= page.getByRole('columnheader', {name:'Actions'});
+        this.actionHeader= page.getByRole('columnheader', {name:'Action'});
     }
     async waitForPageToLoad(){
         await this.page.waitForSelector('text=Web Tables');
