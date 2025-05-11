@@ -1,4 +1,4 @@
-import {test,expect,Locator,Page} from '@playwright/test';
+import {Locator,Page} from '@playwright/test';
 
 export class WebTablesPage{
     private page:Page;
