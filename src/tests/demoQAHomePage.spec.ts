@@ -147,5 +147,5 @@ test('Web Tables Test', async ({page}) => {
     expect(await webTablesPageObj.getAgeHeaderText()).toBe('Age');
     expect(await webTablesPageObj.getSalaryHeaderText()).toBe('Salary');
     expect(await webTablesPageObj.getDepartmentHeaderText()).toBe('Department');
-    expect(await webTablesPageObj.getActionHeaderText()).toBe('Actions');
+    expect(await webTablesPageObj.getActionHeaderText()).toBe('Action');
 });
