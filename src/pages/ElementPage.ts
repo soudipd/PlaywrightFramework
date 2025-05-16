@@ -4,6 +4,8 @@ import { TextBoxPage } from './TextBoxPage';
 import { RadioButtonPage } from '../pages/RadioButtonPage';
 import { WebTablesPage } from './WebTablesPage';
 import { ButtonPage } from './ButtonPage';
+import { BrokenImagePage } from './BrokenImageAndLinkPage';
+import { UploadAndDownloadPage } from './UploadAndDownloadPage';
 
 export class ElementsPage{
     private page:Page;
@@ -84,6 +86,19 @@ export class ElementsPage{
         await this.buttons.click();
         const buttonPageObj = new ButtonPage(this.page);
         return buttonPageObj;
+    }
+    async navigateToBrokenImagePage():Promise<BrokenImagePage>{
+        await this.brokenLinksImages.waitFor({state:'visible'});
+        await this.brokenLinksImages.hover();
+        await this.brokenLinksImages.click();
+        return new BrokenImagePage(this.page);
+    }
+    async navigateToUploadAndDownloadPage():Promise<UploadAndDownloadPage>{
+        await this.uploadAndDownload.waitFor({state:'visible'});
+        await this.uploadAndDownload.hover();
+        await this.uploadAndDownload.click();
+        const uploadAndDownloadPageObj = new UploadAndDownloadPage(this.page);
+        return uploadAndDownloadPageObj;
     }
     async clickOnRadioButton(){ 
         await this.radioButton.waitFor({state:'visible'});
