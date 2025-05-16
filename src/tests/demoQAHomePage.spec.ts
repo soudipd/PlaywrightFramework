@@ -130,7 +130,7 @@ test.skip('button test', async ({page}) => {
     await buttonPageObj.clickOnDynamicClickButton();
     await (await buttonPageObj.getDynamicClickMessage()).waitFor({state:'visible'});
 });
-test('Web Tables Test', async ({page}) => {
+test.skip('Web Tables Test', async ({page}) => {
     const demoQAHomePageObj = new demoQAHomePage(page);
     await demoQAHomePageObj.navigateToDemoQAHomePage();
     await demoQAHomePageObj.waitForPageToLoad();
@@ -148,4 +148,31 @@ test('Web Tables Test', async ({page}) => {
     expect(await webTablesPageObj.getSalaryHeaderText()).toBe('Salary');
     expect(await webTablesPageObj.getDepartmentHeaderText()).toBe('Department');
     expect(await webTablesPageObj.getActionHeaderText()).toBe('Action');
+});
+
+test.skip('Broken Image Test', async ({page}) => {
+    const demoQAHomePageObj = new demoQAHomePage(page);
+    await demoQAHomePageObj.navigateToDemoQAHomePage();
+    await demoQAHomePageObj.waitForPageToLoad();
+    const elementPageObj=await demoQAHomePageObj.navigateToElementsPage();
+    const brokenImagePageObj = await elementPageObj.navigateToBrokenImagePage();
+    await brokenImagePageObj.waitForPageToLoad();
+    console.log('Broken Image Page URL:', await brokenImagePageObj.getPageUrl());
+    console.log('Broken Image Page Title:', await brokenImagePageObj.getPageTitle());
+    console.log('Broken Images is/are:', await brokenImagePageObj.getBrokenImages());
+    console.log('Broken Links is/are:', await brokenImagePageObj.getBrokenLinks());
+});
+test('Upload & Download Test', async ({page}) => {
+   const demoQAHomePageObj = new demoQAHomePage(page);
+    await demoQAHomePageObj.navigateToDemoQAHomePage();
+    await demoQAHomePageObj.waitForPageToLoad();
+    const elementPageObj=await demoQAHomePageObj.navigateToElementsPage();
+    const uploadAndDownloadPageObj = await elementPageObj.navigateToUploadAndDownloadPage();
+    await uploadAndDownloadPageObj.waitForPageToLoad();
+    console.log('Upload & Download Page URL:', await uploadAndDownloadPageObj.getPageUrl());    
+    console.log('Upload & Download Page Title:', await uploadAndDownloadPageObj.getPageTitle());
+    const download = await uploadAndDownloadPageObj.clickDownloadButton();
+    const filePath = await download.path();
+    console.log('Download file path:', filePath);
+    //await page.pause()
 });
