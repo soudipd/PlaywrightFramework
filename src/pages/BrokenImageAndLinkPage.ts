@@ -1,4 +1,4 @@
-import {Locator,Page,APIRequestContext,request} from '@playwright/test';
+import {Locator,Page,request} from '@playwright/test';
 
 export class BrokenImagePage{
     private page:Page;
@@ -21,18 +21,26 @@ export class BrokenImagePage{
         return this.page.url();
     }
     async getBrokenImages(): Promise<string[]> {
+      this.page.on('console', msg => {
+        console.log(`[BROWSER LOG]: ${msg.text()}`);
+      });
         const brokenImages = await this.page.evaluate(() => {
           const imgs = Array.from(document.querySelectorAll('img'));
+          console.log('imgs:', imgs);
           return imgs
             .filter(img => !(img.complete && img.naturalWidth > 0))
             .map(img => img.src);
         });
-      
+         
         return brokenImages;
       }
   async getBrokenLinks(): Promise<string[]> {
+    this.page.on('console', msg => {
+      console.log(`[BROWSER LOG]: ${msg.text()}`);
+    });
     const urls = await this.page.evaluate(() => {
       const anchors = Array.from(document.querySelectorAll('a'));
+      console.log('anchors:', anchors);
       return anchors
         .map(anchor => anchor.href)
         .filter(href => href && !href.startsWith('javascript:'));
