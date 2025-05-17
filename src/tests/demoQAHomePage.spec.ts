@@ -185,7 +185,7 @@ test.skip('Broken Image Test', async ({ page }) => {
     await brokenImagePageObj.getBrokenLinks(),
   );
 });
-test.skip('Upload & Download Test', async ({ page }) => {
+test.skip('Download Test', async ({ page }) => {
   const demoQAHomePageObj = new demoQAHomePage(page);
   await demoQAHomePageObj.navigateToDemoQAHomePage();
   await demoQAHomePageObj.waitForPageToLoad();
@@ -206,7 +206,7 @@ test.skip('Upload & Download Test', async ({ page }) => {
   console.log('Download file path:', filePath);
   //await page.pause()
 });
-test('Dynamic Properties Test', async ({ page }) => {
+test.skip('Dynamic Properties Test', async ({ page }) => {
   const demoQAHomePageObj = new demoQAHomePage(page);
   await demoQAHomePageObj.navigateToDemoQAHomePage();
   await demoQAHomePageObj.waitForPageToLoad();
@@ -222,4 +222,23 @@ test('Dynamic Properties Test', async ({ page }) => {
     'Dynamic Properties Page Title:',
     await dynamicPropertiesPageObj.getPageTitle(),
   );
+});
+test("Upload Test", async ({ page }) => {
+  const demoQAHomePageObj = new demoQAHomePage(page);
+  await demoQAHomePageObj.navigateToDemoQAHomePage();
+  await demoQAHomePageObj.waitForPageToLoad();
+  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+  const uploadAndDownloadPageObj = await elementPageObj.navigateToUploadAndDownloadPage();
+  await uploadAndDownloadPageObj.waitForPageToLoad();
+  console.log(
+    'Upload & Download Page URL:',
+    await uploadAndDownloadPageObj.getPageUrl(),
+  );
+  console.log(
+    'Upload & Download Page Title:',
+    await uploadAndDownloadPageObj.getPageTitle(),
+  );
+  const filePath = 'src/data/Screenshot.png';
+  await uploadAndDownloadPageObj.uploadFile(filePath);
+  expect(await uploadAndDownloadPageObj.getUploadedFilePathLocator().innerText()).toContain('Screenshot.png');
 });
