@@ -14,7 +14,9 @@ export class UploadAndDownloadPage {
     this.uploadInput = page.locator('#uploadFile');
     this.downloadBtn = page.locator('#downloadButton');
     this.uploadedFilePath = page.locator('#uploadedFilePath');
-    this.downloadSectionHeader = page.getByRole('heading', { name: 'Download' });
+    this.downloadSectionHeader = page.getByRole('heading', {
+      name: 'Download',
+    });
   }
 
   async waitForPageToLoad(): Promise<void> {
