@@ -7,6 +7,7 @@ export class UploadAndDownloadPage {
   private downloadBtn: Locator;
   private uploadedFilePath: Locator;
   private downloadSectionHeader: Locator;
+  
 
   constructor(page: Page) {
     this.page = page;
@@ -14,9 +15,7 @@ export class UploadAndDownloadPage {
     this.uploadInput = page.locator('#uploadFile');
     this.downloadBtn = page.locator('#downloadButton');
     this.uploadedFilePath = page.locator('#uploadedFilePath');
-    this.downloadSectionHeader = page.getByRole('heading', {
-      name: 'Download',
-    });
+    this.downloadSectionHeader = page.getByRole('heading', {name: 'Download',});
   }
 
   async waitForPageToLoad(): Promise<void> {
