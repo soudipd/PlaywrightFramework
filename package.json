@@ -7,7 +7,8 @@
     "lint": "eslint src/ --ext .ts",
     "lint:fix": "eslint src/ --ext .ts --fix",
     "format": "prettier --write src/**/*.ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "duplicationCheck": "npx jscpd src/ --min-tokens 2 --reporters console"
   },
   "keywords": [],
   "author": "",
