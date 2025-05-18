@@ -2,8 +2,8 @@ import { Page, Locator } from '@playwright/test';
 
 export class CheckBoxPage {
   private page: Page;
-  private checkBox: Locator;
-  private checkBoxHeader: Locator;
+  private checkBox!: Locator;
+  private checkBoxHeader!: Locator;
   private homeCheckBox: Locator;
   private toggleButton: Locator;
   private plusIcon: Locator;
