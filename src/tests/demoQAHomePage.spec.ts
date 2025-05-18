@@ -1,37 +1,31 @@
-import { test, expect } from '@playwright/test';
-import { demoQAHomePage } from '../pages/HomePage';
+import {test, expect} from '../tests/fixtures/navigateToElementsPage.fixture';
 
-test.skip('Home Page Navigation', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const pageTitle = await demoQAHomePageObj.getPageTitle();
-  const pageUrl = await demoQAHomePageObj.getPageUrl();
+
+test.skip('Home Page Navigation', async ({ navigateToElementsPage }) => 
+{
+  const pageTitle = await navigateToElementsPage.getPageTitle();
+  const pageUrl = await navigateToElementsPage.getPageUrl();
   console.log('Page Title:', pageTitle);
   console.log('Page URL:', pageUrl);
   expect(pageTitle).toBe('DEMOQA');
   expect(pageUrl).toBe('https://demoqa.com/');
 });
-test.skip('Miscellaneous Test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
-  const pageTitle = await elementPageObj.getPageTitle();
+test.skip('Miscellaneous Test', async ({ navigateToElementsPage, page }) => {
+  
+  const pageTitle = await navigateToElementsPage.getPageTitle();
 
   console.log('Page Title:', pageTitle);
-  const pageUrl = await elementPageObj.getPageUrl();
+  const pageUrl = await navigateToElementsPage.getPageUrl();
   console.log('Page URL:', pageUrl);
   expect(pageUrl).toBe('https://demoqa.com/elements');
-  await elementPageObj.clickOnTextBox();
-  await elementPageObj.clickOnWebTables();
+  await navigateToElementsPage.clickOnTextBox();
+  await navigateToElementsPage.clickOnWebTables();
   console.log(
     'Web Tables page title: ',
-    await elementPageObj.getWebTablesText(),
+    await navigateToElementsPage.getWebTablesText(),
   );
 
-  const textBoxPageObj = await elementPageObj.navigateToTextBox();
+  const textBoxPageObj = await navigateToElementsPage.navigateToTextBox();
   await textBoxPageObj.waitForPageToLoad();
   console.log('Text Box Page URL:', await textBoxPageObj.getPageUrl());
 
@@ -55,7 +49,7 @@ test.skip('Miscellaneous Test', async ({ page }) => {
     'Permananet Address :Soudip Das, 1234, 5th Avenue, New York, NY 10001',
   );
 
-  const checkBoxPageObj = await elementPageObj.navigateToCheckBox();
+  const checkBoxPageObj = await navigateToElementsPage.navigateToCheckBox();
   await checkBoxPageObj.waitForPageToLoad();
   console.log('Check Box Page URL:', await checkBoxPageObj.getPageUrl());
   /*const isCheckBoxChecked = await checkBoxPageObj.clickOnTheCheckBoxBesideHome();*/
@@ -113,22 +107,17 @@ test.skip('Miscellaneous Test', async ({ page }) => {
   expect(await resultLocator.isVisible()).toBeFalsy();
 });
 
-test.skip('Radio Button Test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+test.skip('Radio Button Test', async ({ navigateToHomePage }) => {
+  
+  const elementPageObj = await navigateToHomePage.navigateToElementsPage();
   const radioButtonPageObj = await elementPageObj.navigateToRadioButtonPage();
   await radioButtonPageObj.waitForPageToLoad();
   await radioButtonPageObj.clickOnYesRadioButton();
   await radioButtonPageObj.clickOnImpressiveRadioButton();
 });
-test.skip('button test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
-  const buttonPageObj = await elementPageObj.navigateToButtonPage();
+test.skip('button test', async ({ navigateToElementsPage}) => {
+  
+  const buttonPageObj = await navigateToElementsPage.navigateToButtonPage();
   await buttonPageObj.waitForPageToLoad();
   console.log('Button Page URL:', await buttonPageObj.getPageUrl());
   await buttonPageObj.clickOnDoubleClickButton();
@@ -144,11 +133,9 @@ test.skip('button test', async ({ page }) => {
     await buttonPageObj.getDynamicClickMessage()
   ).waitFor({ state: 'visible' });
 });
-test.skip('Web Tables Test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+test.skip('Web Tables Test', async ({ navigateToHomePage }) => {
+  
+  const elementPageObj = await navigateToHomePage.navigateToElementsPage();
   const webTablesPageObj = await elementPageObj.naviagteToWebTablesPage();
   await webTablesPageObj.waitForPageToLoad();
   console.log('Web Tables Page URL:', await webTablesPageObj.getPageUrl());
@@ -164,11 +151,9 @@ test.skip('Web Tables Test', async ({ page }) => {
   expect(await webTablesPageObj.getActionHeaderText()).toBe('Action');
 });
 
-test.skip('Broken Image Test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+test.skip('Broken Image Test', async ({ navigateToHomePage }) => {
+  
+  const elementPageObj = await navigateToHomePage.navigateToElementsPage();
   const brokenImagePageObj = await elementPageObj.navigateToBrokenImagePage();
   await brokenImagePageObj.waitForPageToLoad();
   console.log('Broken Image Page URL:', await brokenImagePageObj.getPageUrl());
@@ -185,11 +170,8 @@ test.skip('Broken Image Test', async ({ page }) => {
     await brokenImagePageObj.getBrokenLinks(),
   );
 });
-test.skip('Download Test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+test.skip('Download Test', async ({ navigateToHomePage }) => {
+  const elementPageObj = await navigateToHomePage.navigateToElementsPage();
   const uploadAndDownloadPageObj =
     await elementPageObj.navigateToUploadAndDownloadPage();
   await uploadAndDownloadPageObj.waitForPageToLoad();
@@ -206,11 +188,8 @@ test.skip('Download Test', async ({ page }) => {
   console.log('Download file path:', filePath);
   //await page.pause()
 });
-test.skip('Dynamic Properties Test', async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+test.skip('Dynamic Properties Test', async ({ navigateToHomePage }) => {
+  const elementPageObj = await navigateToHomePage.navigateToElementsPage();
   const dynamicPropertiesPageObj =
     await elementPageObj.navigateToDynamicPropertiesPage();
   await dynamicPropertiesPageObj.waitForPageToLoad();
@@ -223,11 +202,9 @@ test.skip('Dynamic Properties Test', async ({ page }) => {
     await dynamicPropertiesPageObj.getPageTitle(),
   );
 });
-test("Upload Test", async ({ page }) => {
-  const demoQAHomePageObj = new demoQAHomePage(page);
-  await demoQAHomePageObj.navigateToDemoQAHomePage();
-  await demoQAHomePageObj.waitForPageToLoad();
-  const elementPageObj = await demoQAHomePageObj.navigateToElementsPage();
+test("Upload Test", async ({ navigateToHomePage }) => {
+  
+  const elementPageObj = await navigateToHomePage.navigateToElementsPage();
   const uploadAndDownloadPageObj = await elementPageObj.navigateToUploadAndDownloadPage();
   await uploadAndDownloadPageObj.waitForPageToLoad();
   console.log(
