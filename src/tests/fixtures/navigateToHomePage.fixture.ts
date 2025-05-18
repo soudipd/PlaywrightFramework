@@ -3,10 +3,10 @@ import {demoQAHomePage} from '../../pages/HomePage';
 
 type navigateToHomePage ={
     page:Page
-    navigateToHomePage: demoQAHomePage;
+    homePage: demoQAHomePage;
 }
 export const test = base.extend<navigateToHomePage>({
-    navigateToHomePage: async ({page}, use) => {
+    homePage: async ({page}, use) => {
         const homePage = new demoQAHomePage(page);
         await homePage.navigateToDemoQAHomePage()
         await homePage.waitForPageToLoad();

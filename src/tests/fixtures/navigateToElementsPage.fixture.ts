@@ -2,11 +2,11 @@ import {test as base} from '../fixtures/navigateToHomePage.fixture';
 import { ElementsPage } from '../../pages/ElementPage';
 
 type navigateToElementsPage = {
-    navigateToElementsPage: ElementsPage;
+    elementsPage: ElementsPage;
 }
 export const test = base.extend<navigateToElementsPage>({
-    navigateToElementsPage: async ({navigateToHomePage}, use) => {
-        const elementsPageObj = await navigateToHomePage.navigateToElementsPage();
+    elementsPage: async ({homePage}, use) => {
+        const elementsPageObj = await homePage.navigateToElementsPage();
         await elementsPageObj.waitForPageToLoad();
         await use(elementsPageObj);
     }
